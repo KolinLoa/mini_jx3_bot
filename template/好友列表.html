@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/table.css" rel="stylesheet">
+    <title>好友列表</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card" style="background-image: url('img/bg.png');width: 50rem;" id="main">
+            <div class="card-header">
+                <h4 class="text-center">好友列表</h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-primary text-center fs-4" role="alert">好友数量：{{ num }}</div>
+                <table class="table text-center">
+                    <thead class="fs-4">
+                        <tr>
+                            <th scope="col">QQ号</th>
+                            <th scope="col">昵称</th>
+                            <th scope="col">备注</th>
+                        </tr>
+                    </thead>
+                    <tbody class="fs-5">
+                        {% for user in user_list %}
+                        <tr>
+                            <td>{{ user.user_id }}</td>
+                            <td>{{ user.nickname }}</td>
+                            <td>{{ user.remark }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <p class="text-center fs-5">超级用户管理</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

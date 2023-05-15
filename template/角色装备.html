@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>角色装备</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/table.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container " id="main">
+        <div class="card" style="background-image: url('img/bg.png');">
+            <div class="card-header">
+                <div style="text-align:center; margin:10px">
+                    <h2><img src="sect/{{ data.kungfu }}.png" height="70" width="70"><strong> {{server}} •
+                            {{name}}</strong></h2>
+                </div>
+            </div>
+            <div class="card-body">
+                <!--角色属性-->
+                {% if data.info %}
+                <hr>
+                <div class="row" style="padding: 20px">
+                    {% for one in data.info %}
+                    <div class="col-4">
+                        <h3><strong>{{ one.name }}：</strong>{{ one.value }}</h3>
+                    </div>
+                    {% endfor %}
+                </div>
+                <h2 class="tittle-with-hr text-center">
+                    <span><strong>装备分数：{{ data.score }}</strong></span>
+                </h2>
+                {% endif %}
+                <!--角色装备-->
+                <div class="row">
+                    {% for one in data.equip %}
+                    <div class="row">
+                        <div class="col-1">
+                            <div style="border: 3px solid {{ one.color }}; margin: 0 -10px 0 0;">
+                                <img src="{{ one.icon }}" width="70" height="70">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <p style="margin:1px;font-size: 25px;"><strong style="color: {{ one.color }};">{{ one.name
+                                    }}</strong>({{one.quality}})</p>
+                            <p style="margin:1px;">{{ one.modifyType }}</p>
+                            <p style="margin:1px;color: darkgray;">{{ one.source }}</p>
+                        </div>
+                        <div class="col text-end fs-5 offset-md-3 justify-content-end">
+                            <p style="margin:1px;">
+                                {% for i in range(one.strengthLevel) %}
+                                <img src="img/star.png" width="25" height="25">
+                                {% endfor %}
+                            </p>
+                            <p style="margin:1px;color:cornflowerblue;">{{ one.permanentEnchant }}</p>
+                            <p style="margin:1px;">
+                                {% for icon in one.fiveStone %}
+                                <img src="{{ icon }}" width="30" height="30">
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    {% endfor %}
+
+                </div>
+                <!--角色奇穴-->
+                {% if data.qixue %}
+                <div style="margin-top:10px;"></div>
+                <div class="row">
+                    {% for one in data.qixue %}
+                    <div class="col-1 text-center fs-5">
+                        <img src="{{ one.icon }}" width="50" height="50" style="margin-top:20px;">
+                        <p>{{ one.name }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="card-footer">
+                <h6 class="text-center fs-3">数据来源：www.jx3api.com</h6>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
