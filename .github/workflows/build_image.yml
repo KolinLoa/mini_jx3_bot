@@ -34,6 +34,6 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.REGISTRY_USERNAME }}/mini_jx3_bot:latest
-      # 完成
+      # 完
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
