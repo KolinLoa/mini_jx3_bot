@@ -19,4 +19,4 @@ RUN apt update &&\
     apt clean autoclean &&\
     apt autoremove -y &&\
     rm -rf /var/lib/apt/lists/*
-CMD python3 bot.py
+CMD nb run
