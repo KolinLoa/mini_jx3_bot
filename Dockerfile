@@ -14,7 +14,6 @@ RUN apt update &&\
     ln -sf /bin/python3 /bin/python &&\
     python3 -m pip install -r requirements.txt &&\
     python3 -m pip install nonebot-plugin-txt2img &&\
-    cp /mini_jx3_bot/msyh.ttc /usr/share/fonts/ &&\
     python3 -m playwright install chromium &&\
     apt-get install -y libnss3-dev libxss1 libasound2 libxrandr2 libatk1.0-0 libgtk-3-0 libgbm-dev libxshmfence1 &&\
     apt clean autoclean &&\
